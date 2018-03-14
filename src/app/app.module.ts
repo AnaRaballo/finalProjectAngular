@@ -16,13 +16,15 @@ import { AdoptionService } from './services/adoption.service'
 import { AppRoutingModule } from './app.routing';
 import { AdoptionComponent } from './components/adoption/adoption.component';
 import { LoginComponent } from './components/login/login.component';
+import { NewAdoptionComponent } from './components/new-adoption/new-adoption.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     AdoptionComponent,
-    LoginComponent
+    LoginComponent,
+    NewAdoptionComponent
   ],
   imports: [
     BrowserModule,

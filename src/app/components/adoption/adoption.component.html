@@ -1,0 +1,21 @@
+<p>
+  adoption works!
+</p>
+<button (click)="logMeOut()">Log Out</button>
+<p *ngIf="logoutError" class="error">{{logoutError}}</p>
+
+<div *ngIf="currentUser">
+  <header>
+    <p> Hello, {{ currentUser.username }}. </p>
+    <a [routerLink]="['/adoption/new']">Add new dog</a>
+    <button (click)="logMeOutPls()"> Log Out </button>
+    <p *ngIf="logoutError" class="error">
+      {{ logoutError }}
+    </p>
+  </header>
+  <h2>Dogs List</h2>
+
+  <div *ngFor="let adopt of adoptions">
+    <a [routerLink]="['/adoptions', adopt._id]">{{ adopt.description }}</a>
+  </div>
+</div>

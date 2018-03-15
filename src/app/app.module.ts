@@ -17,6 +17,11 @@ import { AppRoutingModule } from './app.routing';
 import { AdoptionComponent } from './components/adoption/adoption.component';
 import { LoginComponent } from './components/login/login.component';
 import { NewAdoptionComponent } from './components/new-adoption/new-adoption.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+
+// Image Config
+import { FileUploadModule } from "ng2-file-upload";
+import { AdoptDetailsComponent } from './components/adopt-details/adopt-details.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +29,16 @@ import { NewAdoptionComponent } from './components/new-adoption/new-adoption.com
     SignupComponent,
     AdoptionComponent,
     LoginComponent,
-    NewAdoptionComponent
+    NewAdoptionComponent,
+    NavBarComponent,
+    AdoptDetailsComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FileUploadModule
   ],
   providers: [ AuthService, AdoptionService ],
   bootstrap: [AppComponent]

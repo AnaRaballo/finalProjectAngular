@@ -1,22 +1,15 @@
-<p>
-  adoption works!
-</p>
-<button (click)="logMeOut()">Log Out</button>
-<p *ngIf="logoutError" class="error">{{logoutError}}</p>
 
 <div *ngIf="currentUser">
   <header>
     <p> Hello, {{ currentUser.username }}. </p>
-    <a [routerLink]="['/adoption/new']">Add new dog</a>
-    <button (click)="logMeOutPls()"> Log Out </button>
-    <p *ngIf="logoutError" class="error">
-      {{ logoutError }}
-    </p>
+    <a [routerLink]="['/add-adoption']">Add new dog</a>
+    
   </header>
 </div>
 
   <h2>Dogs List</h2>
 
   <div *ngFor="let oneAdoption of adoptions">
-    <a [routerLink]="['/adoptions', oneAdoption._id]">{{ oneAdoption.description }}</a>
+    <a [routerLink]="['/adoptions/', oneAdoption._id]">{{ oneAdoption.description }}</a>
+    <img height= "300px" [src]="baseUrl + oneAdoption.image"/>
   </div>

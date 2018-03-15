@@ -14,9 +14,9 @@ import { AdoptionService } from "../../services/adoption.service";
 export class AdoptionComponent implements OnInit {
 
   currentUser: string;
-  logoutError: string;
   adoptionsListError: string;
   adoptions: any;
+  baseUrl = environment.apiBase;
 
   constructor(private myAuthService: AuthService, private myRouter: Router, private myAdoptionService: AdoptionService) { }
 
@@ -28,13 +28,12 @@ export class AdoptionComponent implements OnInit {
       .then(resultFromApi => {
         this.currentUser = resultFromApi;
         console.log("user is: ", resultFromApi)
-        // this.getAdoption();
       })
 
    // Even if you don't do anything on error, catch to avoid a console error.
       .catch (err => {
         console.log(err);
-        this.myRouter.navigate(["/adopt≈ion"]);
+        this.myRouter.navigate(["/adoption"]);
       })
   }
 
@@ -49,16 +48,5 @@ export class AdoptionComponent implements OnInit {
       }
     );
   } // close getAdoptions()
-
-  logMeOut() {
-    this.myAuthService
-      .logout()
-      .then(() => {
-        this.myRouter.navigate(["/"]);
-      })
-      .catch(() => {
-        this.logoutError = "Log out went bad.";
-      });
-  } // close logMeOutPls()
 
 }

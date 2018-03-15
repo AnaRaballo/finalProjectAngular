@@ -1,3 +1,21 @@
-<p>
-  new-adoption works!
-</p>
+<h3>Add a new phone</h3>
+  <p *ngIf="saveError" class="error">
+    {{ saveError }}
+  </p>
+
+<form (ngSubmit)="saveNewDog()">
+
+  <label for="dog-description-input"> Dog Description </label>
+  <input id="dog-description-input" type="text" placeholder="Dog Description" [(ngModel)]="newDog.dogDescription" name="dogDescription" required>
+  <br>
+
+  <!-- <label for="dog-owner-input"> Dog Owner </label>
+  <input id="dog-owner-input" type="text" placeholder="Dog Owner" [(ngModel)]="newDog._id" name="dogOwner" required>
+  <br> -->
+
+  <label for="dog-image-input"> Image </label>
+  <input id="dog-image-input" type="file" name="dogImage" ng2FileSelect [uploader]="myUploader">
+  <br>
+
+  <button> Save New Dog </button>
+</form>

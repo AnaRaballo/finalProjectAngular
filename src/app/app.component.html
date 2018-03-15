@@ -1,5 +1,9 @@
-<a [routerLink]="['/signup']">Signup</a>
-<a [routerLink]="['/login']">Login</a>
+<!-- <a *ngIf="!(user | async)" [routerLink]="['/signup']">Signup</a>
+<a *ngIf="!(user | async)" [routerLink]="['/login']">Login</a>
 <a [routerLink]="['/adoption']">Adoption</a>
 
+<button (click)="logMeOut()"> Log Out </button>
+    <p *ngIf="logoutError" class="error">{{ logoutError }}</p> -->
+    
+    <app-nav-bar></app-nav-bar>
 <router-outlet></router-outlet>

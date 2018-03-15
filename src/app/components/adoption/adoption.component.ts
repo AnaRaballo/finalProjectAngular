@@ -21,19 +21,20 @@ export class AdoptionComponent implements OnInit {
   constructor(private myAuthService: AuthService, private myRouter: Router, private myAdoptionService: AdoptionService) { }
 
   ngOnInit() {
+    this.getAdoption();
     this.myAuthService
       .checklogin()
-      // If success, we are logged in.
+    //If success, we are logged in.
       .then(resultFromApi => {
         this.currentUser = resultFromApi;
         console.log("user is: ", resultFromApi)
-        this.getAdoption();
+        // this.getAdoption();
       })
 
-      // Even if you don't do anything on error, catch to avoid a console error.
+   // Even if you don't do anything on error, catch to avoid a console error.
       .catch (err => {
         console.log(err);
-        this.myRouter.navigate(["/"]);
+        this.myRouter.navigate(["/adopt≈ion"]);
       })
   }
 
@@ -44,7 +45,7 @@ export class AdoptionComponent implements OnInit {
         this.adoptions = allTheAdoptions;
       },
       () => {
-        this.adoptionsListError = "Sorry, no adoptionslisted.";
+        this.adoptionsListError = "Sorry, no dogs listed.";
       }
     );
   } // close getAdoptions()

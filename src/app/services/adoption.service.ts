@@ -11,7 +11,7 @@ export class AdoptionService {
 
   getAllAdoptions(){
     return this.myHttp.get(`${environment.apiBase}/api/adoption`,
-  {withCredentials: true})
+  {withCredentials: false})
   .map( res => res.json())
   }
 }

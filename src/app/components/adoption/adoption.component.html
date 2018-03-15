@@ -13,9 +13,10 @@
       {{ logoutError }}
     </p>
   </header>
+</div>
+
   <h2>Dogs List</h2>
 
-  <div *ngFor="let adopt of adoptions">
-    <a [routerLink]="['/adoptions', adopt._id]">{{ adopt.description }}</a>
+  <div *ngFor="let oneAdoption of adoptions">
+    <a [routerLink]="['/adoptions', oneAdoption._id]">{{ oneAdoption.description }}</a>
   </div>
-</div>

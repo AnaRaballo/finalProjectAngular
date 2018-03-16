@@ -1,0 +1,21 @@
+<h3>Add a new lost dog</h3>
+  <p *ngIf="saveError" class="error">
+    {{ saveError }}
+  </p>
+
+<form (ngSubmit)="saveNewLostDog()">
+
+  <label for="dog-location-input"> Dog Was Found in: </label>
+  <input id="dog-location-input" type="text" placeholder="Dog Location" [(ngModel)]="newLostDog.lostDogLocation" name="lostDogLocation" required>
+  <br>
+
+  <!-- <label for="dog-owner-input"> Dog Owner </label>
+  <input id="dog-owner-input" type="text" placeholder="Dog Owner" [(ngModel)]="newDog._id" name="dogOwner" required>
+  <br> -->
+
+  <label for="dog-image-input"> Image </label>
+  <input id="dog-image-input" type="file" name="lostDogImage" ng2FileSelect [uploader]="myUploader">
+  <br>
+
+  <button> Save New Lost Dog </button>
+</form>

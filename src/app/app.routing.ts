@@ -6,7 +6,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AdoptionComponent } from './components/adoption/adoption.component';
 import { NewAdoptionComponent } from './components/new-adoption/new-adoption.component';
 import { AdoptDetailsComponent } from './components/adopt-details/adopt-details.component';
-
+import { LostComponent } from './components/lost/lost.component';
+import { NewLostComponent } from './components/new-lost/new-lost.component';
+import { LostDetailsComponent } from './components/lost-details/lost-details.component';
 
 const routes: Routes = [
     { 
@@ -28,6 +30,18 @@ const routes: Routes = [
 { 
     path: 'adoptions/:id', 
     component: AdoptDetailsComponent 
+},
+{ 
+    path: 'lost', 
+    component: LostComponent 
+},
+{ 
+    path: 'add-lost', 
+    component: NewLostComponent 
+},
+{ 
+    path: 'lost/:id', 
+    component: LostDetailsComponent 
 }
 ];
 

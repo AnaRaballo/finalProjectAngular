@@ -1,0 +1,19 @@
+
+<div *ngIf="currentUser">
+    <header>
+      <p> Hello, {{ currentUser.username }}. </p>
+      <a [routerLink]="['/add-lost']">Add new lost dog</a>
+    </header>
+  </div>
+
+<agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    <agm-info-window>Börk</agm-info-window>
+  </agm-map>
+  <br>
+
+  <p> Looking for me? </p>
+  <div *ngFor="let oneLost of lost">
+      <a [routerLink]="['/lost/', oneLost._id]">{{ oneLost.location }}</a>
+      <img height= "300px" [src]="baseUrl + oneLost.image"/>
+    </div>

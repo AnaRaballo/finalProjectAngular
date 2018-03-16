@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AdoptionService } from "../../services/adoption.service";
-import { AuthService } from "../../services/auth.service";
+import { LostService } from "../../services/lost.service"
+import { AuthService } from "../../services/auth.service"
 import { Router } from "@angular/router"
 import { FileUploader } from "ng2-file-upload";
 import { environment } from "../../../environments/environment";
 
 @Component({
-  selector: 'app-new-adoption',
-  templateUrl: './new-adoption.component.html',
-  styleUrls: ['./new-adoption.component.css']
+  selector: 'app-new-lost',
+  templateUrl: './new-lost.component.html',
+  styleUrls: ['./new-lost.component.css']
 })
-export class NewAdoptionComponent implements OnInit {
-  newDog = {
-    dogDescription:""
+export class NewLostComponent implements OnInit {
+  newLostDog = {
+    lostDogLocation:""
   }
 
   saveError: string;
 
   myUploader = new FileUploader({
-    url: environment.apiBase + "/api/adoption",
-    itemAlias: "dogImage"
+    url: environment.apiBase + "/api/lost",
+    itemAlias: "lostDogImage"
   });
 
-  constructor(private myAuthService: AuthService, private myRouter: Router, private myAdoptionService: AdoptionService) { }
+  constructor(private myAuthService: AuthService, private myRouter: Router, private myLostService: LostService) { }
 
   ngOnInit() {
     this.myAuthService
@@ -34,44 +34,47 @@ export class NewAdoptionComponent implements OnInit {
  // Even if you don't do anything on error, catch to avoid a console error.
     .catch (err => {
       console.log(err);
-      this.myRouter.navigate(["/adoption"]);
+      this.myRouter.navigate(["/lost"]);
     });
   }
 
-  saveNewDog(){
+  saveNewLostDog(){
     if (this.myUploader.getNotUploadedItems().length === 0) {
-      this.saveDogNoImage();
+      this.saveLostDogNoImage();
     } else {
-      this.saveDogWithImage();
+      this.saveLostDogWithImage();
     }
   }
 
-  private saveDogNoImage(){
-    this.myAdoptionService.createNewAdoption(this.newDog)
+  private saveLostDogNoImage(){
+    this.myLostService.createNewLost(this.newLostDog)
       .then( res => {
-        this.newDog = {
-          dogDescription: ""
+        this.newLostDog = {
+          lostDogLocation: ""
       }
       this.saveError = ""
-    this.myRouter.navigate(['/adoption']);
+    this.myRouter.navigate(['/lost']);
     })
     .catch( err => { this.saveError = "Something went wrong when saving"})
   }
 
-  private saveDogWithImage(){
+  private saveLostDogWithImage(){
     this.myUploader.onBuildItemForm = (item, form) => {
-      form.append('dogDescription', this.newDog.dogDescription);
+      form.append('lostDogLocation', this.newLostDog.lostDogLocation);
     }
     this.myUploader.onSuccessItem = (item, response) =>{
-      this.newDog = {
-        dogDescription: ""
+      console.log("========", this.newLostDog)
+      this.newLostDog = {
+        lostDogLocation: ""
         };
         this.saveError = ""
-        this.myRouter.navigate(["/adoption"]);
+        this.myRouter.navigate(["/lost"]);
     }
     this.myUploader.onErrorItem = (item, response) => {
       this.saveError = "Saving dog with image went bad. Sorry!";
     }
     this.myUploader.uploadAll();
   }
+  
+
 }

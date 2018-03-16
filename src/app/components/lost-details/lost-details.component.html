@@ -1,0 +1,24 @@
+<p>{{ lostDog.location }}</p>
+<img [src]="baseUrl + lostDog.image"/>
+
+<button *ngIf="lostDog._id" (click)="deleteLostDog()">Delete</button>
+
+<div>
+  <a [routerLink]="['/lost']">Take me back to list</a>
+</div>
+
+
+<!-- update lost dog area -->
+
+<form (ngSubmit)="doLostDogUpdate(lostDog._id, myForm)" #myForm="ngForm" >
+
+    <label for="lostDog-location-input"> Dog Location </label> 
+    <input id="lostDog-location-input" type="text"  [(ngModel)]="lostDog.location" name="dogLocation" value="{{ lostDog.location }}">
+    <br>
+
+    <!-- <label for="dog-image-input"> Image </label>
+    <input id="dog-image-input" type="file" name="dogImage" ng2FileSelect [uploader]="myUploader" value ="{{ dog.filename }}">
+    <br> -->
+
+    <button type="submit">Save updates</button>
+  </form>

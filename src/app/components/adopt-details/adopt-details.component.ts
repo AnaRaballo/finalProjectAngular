@@ -66,13 +66,13 @@ export class AdoptDetailsComponent implements OnInit {
   sendUpdatesToApi(id){
     this.updateDog = { dogDescription: this.dog.description };
     console.log( "updates: ", this.updateDog)
-      this.myAdoptionService.updatedDog(id, this.updateDog)
+    this.myAdoptionService.updatedDog(id, this.updateDog)
       .toPromise()
       .then(() => {
         this.myRouter.navigate(['/adoption'])
       })
       .catch()
-      } 
+  } 
 
   deleteDog() {
     if(!confirm("Are you sure?")) {
@@ -90,7 +90,7 @@ export class AdoptDetailsComponent implements OnInit {
       console.log(err);
     });
   }
-  }
+}
 
 
 

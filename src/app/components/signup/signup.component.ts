@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   
   signUpInfo = {
     username: "",
+    email: "",
     password: ""
   };
   
@@ -25,7 +26,7 @@ export class SignupComponent implements OnInit {
     .signup(this.signUpInfo)
     .then(resultFromApi => {
       //clear form
-      this.signUpInfo = { username: "", password: ""};
+      this.signUpInfo = { username: "", email: "", password: ""};
 
       //clear error message
       this.errorMessage = "";

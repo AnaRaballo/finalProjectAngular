@@ -1,7 +1,9 @@
 <p>{{ lostDog.location }}</p>
 <img [src]="baseUrl + lostDog.image"/>
 
-<button *ngIf="lostDog._id" (click)="deleteLostDog()">Delete</button>
+<div *ngIf="currentUser._id === lostDog.owner">
+  <button *ngIf="lostDog._id" (click)="deleteLostDog()">Delete</button>
+</div>
 
 <div>
   <a [routerLink]="['/lost']">Take me back to list</a>
@@ -9,8 +11,8 @@
 
 
 <!-- update lost dog area -->
-
-<form (ngSubmit)="doLostDogUpdate(lostDog._id, myForm)" #myForm="ngForm" >
+<div *ngIf="currentUser._id === lostDog.owner">
+  <form (ngSubmit)="doLostDogUpdate(lostDog._id, myForm)" #myForm="ngForm" >
 
     <label for="lostDog-location-input"> Dog Location </label> 
     <input id="lostDog-location-input" type="text"  [(ngModel)]="lostDog.location" name="dogLocation" value="{{ lostDog.location }}">
@@ -22,3 +24,4 @@
 
     <button type="submit">Save updates</button>
   </form>
+</div>

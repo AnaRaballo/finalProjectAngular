@@ -17,6 +17,7 @@ export class AuthService {
         //Form body information to send to back end (req.body)
         {
           signUpUsername: componentInfo.username,
+          signUpEmail: componentInfo.email,
           signUpPassword: componentInfo.password
         },
 

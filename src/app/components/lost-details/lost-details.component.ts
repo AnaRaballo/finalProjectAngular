@@ -19,7 +19,7 @@ export class LostDetailsComponent implements OnInit {
   baseUrl = environment.apiBase;
   public updateLostDog: Object = {}
   public dogLocation: String;
-  
+  currentUser= <any>{}
   saveError = "";
 
   constructor(
@@ -36,7 +36,11 @@ export class LostDetailsComponent implements OnInit {
     this.myAuthService
     .checklogin()
     //If success, we are logged in.
-    .then()
+    .then( res =>{
+      this.currentUser = res;
+      console.log("current user is: ", this.currentUser._id)
+
+    })
 
     // Even if you don't do anything on error, catch to avoid a console error.
     .catch (err => {
@@ -50,7 +54,7 @@ export class LostDetailsComponent implements OnInit {
     this.myLostService.getLostDogId(id)
     .then( theLostDogDetails => {
         this.lostDog = theLostDogDetails;
-        console.log("dog details: ", this.lostDog)
+        console.log("dog owner: ", this.lostDog.owner)
     })
   }
 

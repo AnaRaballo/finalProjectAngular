@@ -2,7 +2,9 @@
 <p>{{ dog.description }}</p>
 <img [src]="baseUrl + dog.image"/>
 
+<div *ngIf="currentUser._id === dog.owner">
 <button *ngIf="dog._id" (click)="deleteDog()">Delete</button>
+</div>
 
 <div>
   <a [routerLink]="['/adoption']">Take me back to list</a>
@@ -10,7 +12,7 @@
 
 
 <!-- update dog area -->
-
+<div *ngIf="currentUser._id === dog.owner">
 <form (ngSubmit)="doUpdate(dog._id, myForm)" #myForm="ngForm" >
 
     <label for="dog-description-input"> Dog Description </label> 
@@ -23,3 +25,4 @@
 
     <button type="submit">Save updates</button>
   </form>
+  </div>

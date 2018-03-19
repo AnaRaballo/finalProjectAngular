@@ -20,7 +20,7 @@ export class AdoptDetailsComponent implements OnInit {
   baseUrl = environment.apiBase;
   public updateDog: Object = {}
   public dogDescription: String;
-  
+  currentUser= <any>{}
   saveError = "";
 
   constructor(
@@ -37,7 +37,10 @@ export class AdoptDetailsComponent implements OnInit {
     this.myAuthService
     .checklogin()
     //If success, we are logged in.
-    .then()
+    .then( res => {
+      this.currentUser = res;
+      console.log("current user is: ", this.currentUser._id)
+    })
 
     // Even if you don't do anything on error, catch to avoid a console error.
     .catch (err => {
@@ -51,7 +54,7 @@ export class AdoptDetailsComponent implements OnInit {
     this.myAdoptionService.getId(id)
     .then( theDogDetails => {
         this.dog = theDogDetails;
-        console.log("dog details: ", this.dog)
+        console.log("dog details: ", this.dog.owner)
     })
   }
 

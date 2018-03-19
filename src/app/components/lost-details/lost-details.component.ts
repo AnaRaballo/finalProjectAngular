@@ -41,7 +41,7 @@ export class LostDetailsComponent implements OnInit {
     // Even if you don't do anything on error, catch to avoid a console error.
     .catch (err => {
       console.log(err);
-      this.myRouter.navigate(["/losts/id"]);
+      this.myRouter.navigate(["/lost/id"]);
     });
   }
 

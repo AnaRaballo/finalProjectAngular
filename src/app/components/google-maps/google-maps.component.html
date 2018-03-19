@@ -1,0 +1,51 @@
+<agm-map 
+[latitude]="lat" 
+[longitude]="lng"
+[zoom]="zoom"
+[disableDefaultUI]=false
+[zoomControl]="false"
+(mapClick)="mapClicked($event)">
+
+  <agm-marker 
+  *ngFor= "let m of markers; let i = index"
+  (markerClick)="clickedMarker(m, i)"
+  [latitude]="m.lat" 
+  [longitude]="m.lng"
+  [markerDraggable]="m.draggable"
+  (dragEnd)="markerDragEnd(m, $event)"
+  >
+
+    <agm-info-window>
+      <strong> {{ m.name }} </strong>
+    </agm-info-window>
+
+  </agm-marker>
+</agm-map>
+
+<!-- <div class= "row">
+  <div class= "col-md-12">
+    <h3> Add New Marker </h3>
+  </div>
+  <div class="panel-body">
+    <form (submit)= "addMarker()">
+      <label>Location Name</label>
+      <input type= "text" [(ngModel)]="markerName" name="markerName">
+
+      <label>Latitud</label>
+      <input type= "text" [(ngModel)]="markerLat" name="markerLat">
+
+      <label>Longitud</label>
+      <input type= "text" [(ngModel)]="markerLng" name="markerLng">
+
+      <label>Draggable</label>
+      <select type= "text" [(ngModel)]="markerDraggable" name="markerDraggable">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+      <input type="submit" value="Map it">
+
+    </form>
+  </div>
+</div> -->
+
+<app-new-lost></app-new-lost>

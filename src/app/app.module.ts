@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule, ApplicationRef, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http'
@@ -29,6 +29,7 @@ import { LostComponent } from './components/lost/lost.component';
 // Google Maps API Config
 import { AgmCoreModule } from '@agm/core';
 import { LostDetailsComponent } from './components/lost-details/lost-details.component';
+import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LostDetailsComponent } from './components/lost-details/lost-details.com
     AdoptDetailsComponent,
     LostComponent,
     NewLostComponent,
-    LostDetailsComponent
+    LostDetailsComponent,
+    GoogleMapsComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,7 @@ import { LostDetailsComponent } from './components/lost-details/lost-details.com
     })
   ],
   providers: [ AuthService, AdoptionService, LostService ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

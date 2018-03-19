@@ -2,15 +2,11 @@
 <div *ngIf="currentUser">
     <header>
       <p> Hello, {{ currentUser.username }}. </p>
-      <a [routerLink]="['/add-lost']">Add new lost dog</a>
+      <!-- <a [routerLink]="['/add-lost']">Add new lost dog</a> -->
     </header>
   </div>
 
-<agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-    <agm-info-window>Börk</agm-info-window>
-  </agm-map>
-  <br>
+<app-google-maps></app-google-maps>
 
   <p> Looking for me? </p>
   <div *ngFor="let oneLost of lost">

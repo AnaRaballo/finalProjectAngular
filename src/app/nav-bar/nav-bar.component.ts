@@ -19,6 +19,7 @@ export class NavBarComponent implements OnInit {
       .then(userFromDb => {
         this.currentUser = userFromDb;
         this.isLoggedIn = true;
+        console.log("user from db is: ", this.currentUser)
       })
       .catch(err=>{
         console.log("Error in check login on navbar.")

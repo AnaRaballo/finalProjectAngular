@@ -1,9 +1,10 @@
 <a *ngIf="!isLoggedIn" [routerLink]="['/signup']">Signup</a>
-<a *ngIf="!(user | async)" [routerLink]="['/login']">Login</a>
+<a *ngIf="!isLoggedIn" [routerLink]="['/login']">Login</a>
 <a [routerLink]="['/adoption']">Adoption</a>
 <a [routerLink]= "['/lost']">Lost Dogs</a>
 
-<button (click)="logMeOut()"> Log Out </button>
-    <p *ngIf="logoutError" class="error">{{ logoutError }}</p>
-
+<div *ngIf= "isLoggedIn">
+    <button (click)="logMeOut()"> Log Out </button>
+        <p *ngIf="logoutError" class="error">{{ logoutError }}</p>
+</div>
   

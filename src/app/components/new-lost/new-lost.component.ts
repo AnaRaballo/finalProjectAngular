@@ -38,27 +38,27 @@ export class NewLostComponent implements OnInit {
     });
   }
 
-  saveNewLostDog(){
-    if (this.myUploader.getNotUploadedItems().length === 0) {
-      this.saveLostDogNoImage();
-    } else {
-      this.saveLostDogWithImage();
-    }
-  }
+  // saveNewLostDog(){
+  //   if (this.myUploader.getNotUploadedItems().length === 0) {
+  //     this.saveLostDogNoImage();
+  //   } else {
+  //     this.saveLostDogWithImage();
+  //   }
+  // }
 
-  private saveLostDogNoImage(){
-    this.myLostService.createNewLost(this.newLostDog)
-      .then( res => {
-        this.newLostDog = {
-          lostDogLocation: ""
-      }
-      this.saveError = ""
-    this.myRouter.navigate(['/lost']);
-    })
-    .catch( err => { this.saveError = "Something went wrong when saving"})
-  }
+  // private saveLostDogNoImage(){
+  //   this.myLostService.createNewLost(this.newLostDog)
+  //     .then( res => {
+  //       this.newLostDog = {
+  //         lostDogLocation: ""
+  //     }
+  //     this.saveError = ""
+  //   this.myRouter.navigate(['/lost']);
+  //   })
+  //   .catch( err => { this.saveError = "Something went wrong when saving"})
+  // }
 
-  private saveLostDogWithImage(){
+  private saveNewLostDog(){
     this.myUploader.onBuildItemForm = (item, form) => {
       form.append('lostDogLocation', this.newLostDog.lostDogLocation);
     }
@@ -69,6 +69,7 @@ export class NewLostComponent implements OnInit {
         };
         this.saveError = ""
         this.myRouter.navigate(["/lost"]);
+        location.reload();
     }
     this.myUploader.onErrorItem = (item, response) => {
       this.saveError = "Saving dog with image went bad. Sorry!";

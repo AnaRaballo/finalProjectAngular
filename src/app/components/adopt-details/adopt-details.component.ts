@@ -3,11 +3,12 @@ import { ActivatedRoute, Router } from "@angular/router"
 
 import { AdoptionService } from "../../services/adoption.service";
 import { AuthService } from "../../services/auth.service";
+import { FileUploader } from "ng2-file-upload";
 import { environment } from "../../../environments/environment";
 
 import "rxjs/add/operator/toPromise"
 import { Route } from '@angular/router/src/config';
-// import { last } from '@angular/router/src/utils/collection';
+
 
 @Component({
   selector: 'app-adopt-details',
@@ -22,6 +23,11 @@ export class AdoptDetailsComponent implements OnInit {
   public dogDescription: String;
   currentUser= <any>{}
   saveError = "";
+
+  myUploader = new FileUploader({
+    url: environment.apiBase + "/api/adoption",
+    itemAlias: "dogImage"
+  });
 
   constructor(
     private myAdoptionService: AdoptionService,
@@ -54,7 +60,7 @@ export class AdoptDetailsComponent implements OnInit {
     this.myAdoptionService.getId(id)
     .then( theDogDetails => {
         this.dog = theDogDetails;
-        console.log("dog details: ", this.dog.owner)
+        console.log("dog details: ", this.dog.image)
     })
   }
 
@@ -64,18 +70,58 @@ export class AdoptDetailsComponent implements OnInit {
 
     this.dogDescription = formInfo.dogDescription.value;
     this.sendUpdatesToApi(id)
+
+    if (this.myUploader.getNotUploadedItems(). length === 0){
+      this.updateDogNoImage(id);
+    } else {
+      this.updateDogImage(id);
+    }
   }
 
+  
   sendUpdatesToApi(id){
     this.updateDog = { dogDescription: this.dog.description };
     console.log( "updates: ", this.updateDog)
     this.myAdoptionService.updatedDog(id, this.updateDog)
-      .toPromise()
-      .then(() => {
-        this.myRouter.navigate(['/adoption'])
-      })
-      .catch()
-  } 
+    .toPromise()
+    .then(() => {
+      this.myRouter.navigate(['/adoption'])
+    })
+    .catch()
+  }
+  
+  private updateDogNoImage(id){
+    console.log("update dog is: ", this.updateDog)
+    this.myAdoptionService.updatedDog(id, this.updateDog)
+    .toPromise()
+    .then (res => {
+      this.updateDog = {
+        dogDescription: ""
+      }
+      this.saveError = ""
+      this.myRouter.navigate([`/adoption/${id}`]);
+      // location.reload();
+    })
+    .catch( err => { this.saveError = "Something went wrong when saving"})
+  }
+  
+  private updateDogImage(id){
+    this.myUploader.onBuildItemForm = (item, form) => {
+      form.append('dogDescription', this.updateDog[0].dogDescription);
+    }
+    this.myUploader.onSuccessItem = (item, response) =>{
+      this.updateDog = {
+        dogDescription: ""
+        };
+        this.saveError = ""
+        this.myRouter.navigate([`/adoption/${id}`]);
+        // location.reload();
+    }
+    this.myUploader.onErrorItem = (item, response) => {
+      this.saveError = "Saving dog with image went bad. Sorry!";
+    }
+    this.myUploader.uploadAll();
+  }
 
   deleteDog() {
     if(!confirm("Are you sure?")) {

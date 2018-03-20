@@ -2,7 +2,9 @@
 <div *ngIf="currentUser">
   <header>
     <p> Hello, {{ currentUser.username }}. </p>
-    <a [routerLink]="['/add-adoption']">Add new dog</a>
+    <!-- <a [routerLink]="['/add-adoption']">Add new dog</a> -->
+  
+  <app-new-adoption></app-new-adoption>
     
   </header>
 </div>

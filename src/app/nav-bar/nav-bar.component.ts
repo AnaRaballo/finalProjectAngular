@@ -32,6 +32,7 @@ export class NavBarComponent implements OnInit {
         .logout()
         .then(() => {
           this.myRouter.navigate(["/"]);
+          location.reload();
         })
         .catch(() => {
           this.logoutError = "Log out went bad.";

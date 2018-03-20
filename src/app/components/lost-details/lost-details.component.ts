@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from "@angular/router"
 
 import { LostService } from "../../services/lost.service";
 import { AuthService } from "../../services/auth.service";
+import { FileUploader } from "ng2-file-upload";
+
 import { environment } from "../../../environments/environment";
 
 import "rxjs/add/operator/toPromise"
@@ -21,6 +23,11 @@ export class LostDetailsComponent implements OnInit {
   public dogLocation: String;
   currentUser= <any>{}
   saveError = "";
+
+  myUploader = new FileUploader({
+    url: environment.apiBase + "/api/lost",
+    itemAlias: "lostDogImage"
+  });
 
   constructor(
     private myLostService: LostService,
@@ -64,6 +71,12 @@ export class LostDetailsComponent implements OnInit {
 
     this.dogLocation = formInfo.dogLocation.value;
     this.sendUpdatesToApi(id)
+
+    // if (this.myUploader.getNotUploadedItems(). length === 0){
+    //   this.updateLostDogNoImage(id);
+    // } else {
+    //   this.updateLostDogImage(id);
+    // }
   }
 
   sendUpdatesToApi(id){
@@ -76,6 +89,39 @@ export class LostDetailsComponent implements OnInit {
     })
     .catch()
   }
+
+  // private updateLostDogNoImage(id){
+  //   console.log("update dog is: ", this.updateLostDog)
+  //   this.myLostService.updatedLostDog(id, this.updateLostDog)
+  //   .toPromise()
+  //   .then (res => {
+  //     this.updateLostDog = {
+  //       dogDescription: ""
+  //     }
+  //     this.saveError = ""
+  //     this.myRouter.navigate([`/lost/${id}`]);
+  //     // location.reload();
+  //   })
+  //   .catch( err => { this.saveError = "Something went wrong when saving"})
+  // }
+  
+  // private updateLostDogImage(id){
+  //   this.myUploader.onBuildItemForm = (item, form) => {
+  //     form.append('dogDescription', this.updateLostDog[0].dogDescription);
+  //   }
+  //   this.myUploader.onSuccessItem = (item, response) =>{
+  //     this.updateLostDog = {
+  //       dogDescription: ""
+  //       };
+  //       this.saveError = ""
+  //       this.myRouter.navigate([`/lost/${id}`]);
+  //       // location.reload();
+  //   }
+  //   this.myUploader.onErrorItem = (item, response) => {
+  //     this.saveError = "Saving dog with image went bad. Sorry!";
+  //   }
+  //   this.myUploader.uploadAll();
+  // }
 
   deleteLostDog() {
     if(!confirm("Are you sure?")) {

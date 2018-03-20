@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
 
       //redirect to /adoption
       this.myRouter.navigate(["/adoption"]);
+      location.reload();
     })
     .catch(err => {
       const parsedError = err.json();

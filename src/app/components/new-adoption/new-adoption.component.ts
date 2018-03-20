@@ -38,27 +38,27 @@ export class NewAdoptionComponent implements OnInit {
     });
   }
 
-  saveNewDog(){
-    if (this.myUploader.getNotUploadedItems().length === 0) {
-      this.saveDogNoImage();
-    } else {
-      this.saveDogWithImage();
-    }
-  }
+  // saveNewDog(){
+  //   if (this.myUploader.getNotUploadedItems().length === 0) {
+  //     this.saveDogNoImage();
+  //   } else {
+  //     this.saveDogWithImage();
+  //   }
+  // }
 
-  private saveDogNoImage(){
-    this.myAdoptionService.createNewAdoption(this.newDog)
-      .then( res => {
-        this.newDog = {
-          dogDescription: ""
-      }
-      this.saveError = ""
-    this.myRouter.navigate(['/adoption']);
-    })
-    .catch( err => { this.saveError = "Something went wrong when saving"})
-  }
+  // private saveDogNoImage(){
+  //   this.myAdoptionService.createNewAdoption(this.newDog)
+  //     .then( res => {
+  //       this.newDog = {
+  //         dogDescription: ""
+  //     }
+  //     this.saveError = ""
+  //   this.myRouter.navigate(['/adoption']);
+  //   })
+  //   .catch( err => { this.saveError = "Something went wrong when saving"})
+  // }
 
-  private saveDogWithImage(){
+  private saveNewDog(){
     this.myUploader.onBuildItemForm = (item, form) => {
       form.append('dogDescription', this.newDog.dogDescription);
     }
@@ -68,6 +68,7 @@ export class NewAdoptionComponent implements OnInit {
         };
         this.saveError = ""
         this.myRouter.navigate(["/adoption"]);
+        location.reload();
     }
     this.myUploader.onErrorItem = (item, response) => {
       this.saveError = "Saving dog with image went bad. Sorry!";

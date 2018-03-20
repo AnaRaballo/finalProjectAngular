@@ -22,6 +22,11 @@
     <input id="dog-image-input" type="file" name="dogImage" ng2FileSelect [uploader]="myUploader" value ="{{ dog.filename }}">
     <br> -->
 
+    
     <button type="submit">Save updates</button>
   </form>
 </div>
+
+<p>Is this your dog?</p>
+<p>User contact information:</p>
+<p>{{ lostDog.ownerEmail }}</p>

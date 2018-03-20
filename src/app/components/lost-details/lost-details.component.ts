@@ -45,7 +45,7 @@ export class LostDetailsComponent implements OnInit {
     //If success, we are logged in.
     .then( res =>{
       this.currentUser = res;
-      console.log("current user is: ", this.currentUser._id)
+      console.log("current user is: ", this.currentUser)
 
     })
 
@@ -61,7 +61,7 @@ export class LostDetailsComponent implements OnInit {
     this.myLostService.getLostDogId(id)
     .then( theLostDogDetails => {
         this.lostDog = theLostDogDetails;
-        console.log("dog owner: ", this.lostDog.owner)
+        console.log("dog: ", this.lostDog)
     })
   }
 

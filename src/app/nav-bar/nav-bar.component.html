@@ -6,20 +6,19 @@
         onmouseout="this.src='../../../assets/images/Paw.png';">
     </a>
     
-    <div *ngIf="currentUser">
+    <a class="username" *ngIf="currentUser">
     Hello, {{ currentUser.username }}!
-    </div>
+    </a>
     
     <div class="navbar-text ml-auto">
         <a *ngIf="!isLoggedIn" [routerLink]="['/signup']">Sign Up</a>
         <a *ngIf="!isLoggedIn" [routerLink]="['/login']">Log In</a>
         <a [routerLink]="['/adoption']">Adoption</a>
         <a [routerLink]="['/lost']">Lost Dogs</a>
-        
-        <div *ngIf="isLoggedIn">
-            <button class="btn btn-info" (click)="logMeOut()"> Log Out </button>
+        <a *ngIf="isLoggedIn">
+            <button class="btn btn-link" (click)="logMeOut()"> Log Out </button>
             <p *ngIf="logoutError" class="error">{{ logoutError }}</p>
-        </div>
+        </a>
     </div>
         
 </nav>

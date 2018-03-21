@@ -1,0 +1,43 @@
+body{
+    background-color:#c9c0b1;
+    height: 100vh;
+}
+
+.woof-logo{
+    display: block;
+    padding-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.slogan{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    /* color: #febf50; */
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 40px;
+}
+
+.flex-container{
+
+    margin: 0 auto;
+}
+
+.find{
+    width: 20%;
+}
+
+.adopt{
+    width: 20%;
+}
+
+.find:hover{
+    transform: scale(1.1);
+}
+
+.adopt:hover{
+    transform: scale(1.1);
+}

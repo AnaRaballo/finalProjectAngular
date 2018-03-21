@@ -9,45 +9,50 @@ import { AdoptDetailsComponent } from './components/adopt-details/adopt-details.
 import { LostComponent } from './components/lost/lost.component';
 import { NewLostComponent } from './components/new-lost/new-lost.component';
 import { LostDetailsComponent } from './components/lost-details/lost-details.component';
+import { IndexComponent } from './components/index/index.component';
 
 const routes: Routes = [
-    { 
-    path: 'signup', 
-    component: SignupComponent 
-},
-{ 
-    path: 'login', 
-    component: LoginComponent 
-},
-{ 
-    path: 'adoption', 
-    component: AdoptionComponent 
-},
-{ 
-    path: 'add-adoption', 
-    component: NewAdoptionComponent 
-},
-{ 
-    path: 'adoptions/:id', 
-    component: AdoptDetailsComponent 
-},
-{ 
-    path: 'lost', 
-    component: LostComponent 
-},
-{ 
-    path: 'add-lost', 
-    component: NewLostComponent 
-},
-{ 
-    path: 'lost/:id', 
-    component: LostDetailsComponent 
-}
+    {
+        path: '',
+        component: IndexComponent
+    },
+    {
+        path: 'signup',
+        component: SignupComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'adoption',
+        component: AdoptionComponent
+    },
+    {
+        path: 'add-adoption',
+        component: NewAdoptionComponent
+    },
+    {
+        path: 'adoptions/:id',
+        component: AdoptDetailsComponent
+    },
+    {
+        path: 'lost',
+        component: LostComponent
+    },
+    {
+        path: 'add-lost',
+        component: NewLostComponent
+    },
+    {
+        path: 'lost/:id',
+        component: LostDetailsComponent
+    }
 ];
 
-@NgModule ({
+@NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
 
-export class AppRoutingModule {}
+export class AppRoutingModule { }

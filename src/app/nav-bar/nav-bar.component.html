@@ -1,10 +1,25 @@
-<a *ngIf="!isLoggedIn" [routerLink]="['/signup']">Signup</a>
-<a *ngIf="!isLoggedIn" [routerLink]="['/login']">Login</a>
-<a [routerLink]="['/adoption']">Adoption</a>
-<a [routerLink]= "['/lost']">Lost Dogs</a>
+<nav class="navbar navbar-light bg-faded">
 
-<div *ngIf= "isLoggedIn">
-    <button (click)="logMeOut()"> Log Out </button>
-        <p *ngIf="logoutError" class="error">{{ logoutError }}</p>
-</div>
-  
+    <a class="navbar-brand" href="/">
+        <img class="paw-logo" src="../../assets/images/Paw.png" alt="Logo" 
+        onmouseover="this.src='../../../assets/images/Pawhover.png';"
+        onmouseout="this.src='../../../assets/images/Paw.png';">
+    </a>
+    
+    <div *ngIf="currentUser">
+    Hello, {{ currentUser.username }}!
+    </div>
+    
+    <div class="navbar-text ml-auto">
+        <a *ngIf="!isLoggedIn" [routerLink]="['/signup']">Sign Up</a>
+        <a *ngIf="!isLoggedIn" [routerLink]="['/login']">Log In</a>
+        <a [routerLink]="['/adoption']">Adoption</a>
+        <a [routerLink]="['/lost']">Lost Dogs</a>
+        
+        <div *ngIf="isLoggedIn">
+            <button class="btn btn-info" (click)="logMeOut()"> Log Out </button>
+            <p *ngIf="logoutError" class="error">{{ logoutError }}</p>
+        </div>
+    </div>
+        
+</nav>

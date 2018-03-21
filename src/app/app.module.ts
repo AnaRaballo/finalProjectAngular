@@ -30,6 +30,7 @@ import { LostComponent } from './components/lost/lost.component';
 import { AgmCoreModule } from '@agm/core';
 import { LostDetailsComponent } from './components/lost-details/lost-details.component';
 import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
+import { IndexComponent } from './components/index/index.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { GoogleMapsComponent } from './components/google-maps/google-maps.compon
     LostComponent,
     NewLostComponent,
     LostDetailsComponent,
-    GoogleMapsComponent
+    GoogleMapsComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@
 .navbar-text a{
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 2.5vh;
+    font-size: 2vh;
     padding-right: 20px;
 }
 
@@ -26,13 +26,13 @@
 .username{
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 2.5vh;
+    font-size: 2vh;
 }
 
 button{
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 2.5vh;
+    font-size: 2vh;
     padding-right: 20px;
 }
 

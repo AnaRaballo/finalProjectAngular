@@ -1,18 +1,46 @@
-<h3> Log In </h3>
+<div class="form">
+  <div class="form-image">
 
-<p *ngIf="loginErrorMessage" class="error">
-  {{ loginErrorMessage }}
-</p>
+    <img class="signup-img" src="../../../assets/images/Login.png">
+    <p class="form-user">Don't have account?
+      <a [routerLink]="['/signup']">Sign Up</a>
+    </p>
 
-<form (ngSubmit)="doLogin()">
-  <label for="login-username-input"> Username </label>
-  <input id="login-username-input" type="text" placeholder="blah" [(ngModel)]="loginInfo.username" name="loginUsername">
-  <br>
+  </div>
 
-  <label for="login-pass-input"> Password </label>
-  <input id="login-pass-input" type="password" placeholder="*****" [(ngModel)]="loginInfo.password" name="loginPassword">
-  <br>
+  <div class="form-login">
+    <div class="form-group">
 
-  <button> Log In </button>
-</form>
-<p>Don't have account? <a [routerLink]="['/signup']">Sign Up</a></p>
+      <p *ngIf="loginErrorMessage" class="error">
+        {{ loginErrorMessage }}
+      </p>
+      <br>
+
+      <form (ngSubmit)="doLogin()">
+        <label for="login-username-input"> Username </label>
+        <br>
+        <input 
+          class="form-control input-sm chat-input" 
+          id="login-username-input" 
+          type="text" 
+          placeholder="Your Username" 
+          [(ngModel)]="loginInfo.username" 
+          name="loginUsername">
+
+        <br>
+        <label for="login-pass-input"> Password </label>
+        <br>
+        <input 
+        class="form-control input-sm chat-input" 
+        id="login-pass-input" 
+        type="password" 
+        placeholder="Your Password" 
+        [(ngModel)]="loginInfo.password" 
+        name="loginPassword">
+
+        <br>
+        <button> Log In </button>
+      </form>
+    </div>
+  </div>
+</div>

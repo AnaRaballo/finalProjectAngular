@@ -1,30 +1,57 @@
-<body>
-  <div class="form-group">
-    <h3> Sign Up </h3>
-
-    <p *ngIf="errorMessage" class="error">
-      {{ errorMessage }}
-    </p>
-
-    <form (ngSubmit)="doSignUp()">
-
-      <label for="username-input"> Username</label><br>
-      <input id="username-input" type="text" placeholder="blah" [(ngModel)]="signUpInfo.username" name="usernameValue">
-      <br>
-      <br>
-      <label for="email-input"> Email</label><br>
-      <input id="email-input" type="text" placeholder="blah" [(ngModel)]="signUpInfo.email" name="emailValue">
-      <br>
-      <br>
-      <label for="password-input"> Password </label><br>
-      <input id="password-input" type="password" placeholder="*****" [(ngModel)]="signUpInfo.password" name="passwordValue">
-      <br>
-      <br>
-      <button> Sign Up </button>
-    </form>
-    <br>
-    <p>Already have account?
-      <a [routerLink]="['/']">Log In</a>
-    </p>
+<div class="form">
+  <div class="form-image">
+    
+    <img class= "signup-img" src= "../../../assets/images/SignUp.png">
+      <p class="form-user">Already have account?
+        <a [routerLink]="['/login']">Log In</a>
+      </p>
+      
   </div>
-</body>
+  
+  <div class="form-signup">    
+    <div class="form-group">
+      
+      <p *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </p>
+      <br>
+      
+        <form (ngSubmit)="doSignUp()">
+            <label for="username-input"> Username </label>
+            <br>
+            <input 
+              class="form-control input-sm chat-input" 
+              id="username-input" 
+              type="text" 
+              placeholder="Your Name" 
+              [(ngModel)]="signUpInfo.username" 
+              name="usernameValue">
+        
+          <br>
+            <label for="email-input"> Email </label>
+            <br>
+            <input 
+              class="form-control input-sm chat-input" 
+              id="email-input" 
+              type="text" 
+              placeholder="Your Email" 
+              [(ngModel)]="signUpInfo.email" 
+              name="emailValue">
+          
+          <br>
+            <label for="password-input"> Password </label>
+            <br>
+            <input 
+              class="form-control input-sm chat-input" 
+              id="password-input" 
+              type="password" 
+              placeholder="Your Password" 
+              [(ngModel)]="signUpInfo.password"
+              name="passwordValue">
+          
+          <br>
+          <button> Sign Up </button>
+        </form>
+      </div>
+  </div>
+</div>

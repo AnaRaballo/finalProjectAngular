@@ -37,7 +37,7 @@ export class SignupComponent implements OnInit {
     })
     .catch(err => {
       const parsedError = err.json();
-      this.errorMessage = parsedError.message + "🤕";
+      this.errorMessage = parsedError.message + " 🤕";
     });
   } //close doSignUp()
 }

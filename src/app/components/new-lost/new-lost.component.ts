@@ -58,7 +58,7 @@ export class NewLostComponent implements OnInit {
   //   .catch( err => { this.saveError = "Something went wrong when saving"})
   // }
 
-  private saveNewLostDog(){
+  saveNewLostDog(){
     this.myUploader.onBuildItemForm = (item, form) => {
       form.append('lostDogLocation', this.newLostDog.lostDogLocation);
     }

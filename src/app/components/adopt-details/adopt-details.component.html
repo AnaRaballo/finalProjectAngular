@@ -1,7 +1,3 @@
-
-<p>{{ dog.description }}</p>
-<img [src]="baseUrl + dog.image"/>
-
 <div *ngIf="currentUser._id === dog.owner">
 <button *ngIf="dog._id" (click)="deleteDog()">Delete</button>
 </div>

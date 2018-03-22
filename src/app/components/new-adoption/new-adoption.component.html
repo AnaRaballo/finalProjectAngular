@@ -1,3 +1,4 @@
+<div class="new-dog">
 <h3>Add a new dog</h3>
   <p *ngIf="saveError" class="error">
     {{ saveError }}
@@ -5,17 +6,16 @@
 
 <form (ngSubmit)="saveNewDog()">
 
-  <label for="dog-description-input"> Dog Description </label>
-  <input id="dog-description-input" type="text" placeholder="Dog Description" [(ngModel)]="newDog.dogDescription" name="dogDescription" required>
+  <label for="dog-description-input"> Dog Description </label><br>
+  <input 
+  id="dog-description-input" 
+  type="text" placeholder="Dog Description" 
+  [(ngModel)]="newDog.dogDescription" 
+  name="dogDescription" required>
   <br>
-
-  <!-- <label for="dog-owner-input"> Dog Owner </label>
-  <input id="dog-owner-input" type="text" placeholder="Dog Owner" [(ngModel)]="newDog._id" name="dogOwner" required>
-  <br> -->
-
-  <label for="dog-image-input"> Image </label>
-  <input id="dog-image-input" type="file" name="dogImage" ng2FileSelect [uploader]="myUploader">
+  <label class="file-link" for="dog-image-input"> Image </label>
+  <input class="file-upload" id="dog-image-input" type="file" name="dogImage" ng2FileSelect [uploader]="myUploader">
   <br>
-
   <button> Save New Dog </button>
 </form>
+</div>

@@ -58,7 +58,7 @@ export class NewAdoptionComponent implements OnInit {
   //   .catch( err => { this.saveError = "Something went wrong when saving"})
   // }
 
-  private saveNewDog(){
+  saveNewDog(){
     this.myUploader.onBuildItemForm = (item, form) => {
       form.append('dogDescription', this.newDog.dogDescription);
     }
